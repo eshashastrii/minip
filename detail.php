@@ -8,6 +8,7 @@ if (isset ($_GET['id'])) {
     $sql = "SELECT id, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, artiphoto, artinfo FROM games WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     $records = mysqli_fetch_assoc($result);
+
     mysqli_close($conn);
 }
 ?>
@@ -56,19 +57,19 @@ if (isset ($_GET['id'])) {
             <?php if (!empty ($records['size'])): ?>
                 <h2>Team size:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['size']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['size'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['tlimit'])): ?>
                 <h2>Time limit:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['tlimit']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['tlimit'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['edetails'])): ?>
                 <h2>Equipment details:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['edetails']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['edetails'])); ?>
                 </p>
             <?php endif; ?>
             <?php if ($records['ephoto'] !== 'Images/'): ?>
@@ -77,7 +78,7 @@ if (isset ($_GET['id'])) {
             <?php if (!empty ($records['cdetails'])): ?>
                 <h2>Costume details:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['cdetails']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['cdetails'])); ?>
                 </p>
             <?php endif; ?>
             <?php if ($records['cphoto'] !== 'Images/'): ?>
@@ -86,7 +87,7 @@ if (isset ($_GET['id'])) {
             <?php if (!empty ($records['fdetails'])): ?>
                 <h2>Footwear details:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['fdetails']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['fdetails'])); ?>
                 </p>
             <?php endif; ?>
             <?php if ($records['fphoto'] !== 'Images/'): ?>
@@ -95,31 +96,31 @@ if (isset ($_GET['id'])) {
             <?php if (!empty ($records['rules'])): ?>
                 <h2>Rules:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['rules']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['rules'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['vlink'])): ?>
                 <h2>Video links:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['vlink']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['vlink'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['terms'])): ?>
                 <h2>Terminologies:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['terms']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['terms'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['types'])): ?>
                 <h2>Other related types:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['types']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['types'])); ?>
                 </p>
             <?php endif; ?>
             <?php if (!empty ($records['playerlist'])): ?>
                 <h2>Celebrity players list:</h2>
                 <p>
-                    <?php echo htmlspecialchars($records['playerlist']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['playerlist'])); ?>
                 </p>
             <?php endif; ?>
             <?php if ($records['artiphoto'] !== 'Images/'): ?>
@@ -128,7 +129,7 @@ if (isset ($_GET['id'])) {
             <?php endif; ?>
             <?php if (!empty ($records['artinfo'])): ?>
                 <p>
-                    <?php echo htmlspecialchars($records['artinfo']); ?>
+                    <?php echo nl2br(htmlspecialchars($records['artinfo'])); ?>
                 </p>
             <?php endif; ?>
         <?php endif; ?>
