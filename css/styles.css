@@ -1,4 +1,12 @@
-/*Css reset*/
+
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+body {
+   font-family: "Wix Madefor Text", sans-serif;
+   font-optical-sizing: auto;
+   font-style: normal;
+ }
+ 
 *{
     margin:0;
     padding:0;
@@ -18,8 +26,10 @@
 }
 
 body{
-   background-color:white;
-
+   background-image:url(..//Images/bg.1.jpg);
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
 }
 #navbar{
     display:flex;
@@ -96,6 +106,8 @@ body{
 
 
   .scroll{
+   position: relative;
+   top: 30%;
    width: 80%;
    padding: 50px;
    margin: auto;
@@ -109,12 +121,12 @@ body{
 }
 .element{
    margin-top: 70px;
-   color: rgb(63, 60, 60);
+   background: rgb(0 0 0 / 44%);
    text-decoration: none;
    min-height: 200px;
    width: 200px;
    padding: 20px;
-   border: 10px solid rgba(0, 0, 0, 0.2);
+   border: 2px solid rgba(0, 0, 0, 0.2);
    backdrop-filter: blur(10px);
    text-align: center;
    transition: transform 0.3s;
@@ -122,6 +134,9 @@ body{
    overflow: hidden;
 }
 .element:hover{
+   transform: translateY(-10px);
+}
+.element1:hover{
    transform: translateY(-10px);
 }
 .drink{
@@ -132,7 +147,7 @@ body{
 .element .content h1{
    padding-top: 30px;
    font-size: 20px;
-   color: rgb(0, 0, 0);
+   color: rgb(255, 255, 255);
 }
 .next{
    position: fixed;
@@ -145,6 +160,8 @@ body{
    -webkit-appearance: none;
 }
 .icon{
+   position: relative;
+   top:30%;
    background-color: black;
    width: 0px;
    outline: none;
@@ -212,17 +229,4 @@ body{
    top: 114px;
    right: 30px;
    font-size: 21px;
-}
-.container1{
-    margin: 40px;
-    box-sizing: border-box;
-    position: relative;
-    top:18%;
-}
-h1{
-    margin-bottom: 20px;
-}
-h2{
-    margin-bottom:20px;
-    margin-top:20px;
 }
