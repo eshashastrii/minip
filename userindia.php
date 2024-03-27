@@ -34,18 +34,17 @@ mysqli_close($conn);
             <a class="logo">GameOn</a>
             <nav class="header">
                 <ul>
-                    <li class="item"><a href="index.html">Home</a></li>
+                    <li class="item"><a href="userindex.php">Home</a></li>
                     <li class="item"><a href=""> About us</a></li>
                     <li class="item"><a href="">Contact us</a></li>
                 </ul>
             </nav>
         </header>
-        <a href="indiaform.php?name=<?php echo $name; ?>" class="add">+ADD GAMES</a>
     </div>
     <div class="container">
         <?php foreach ($records as $record) { ?>
             <div>
-                <a href="detail.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="details">
+                <a href="userdetail.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="details">
                     <div class="element1">
                         <img src="<?php echo $record['photo']; ?>" class='drink'>
                         <h1>
@@ -53,10 +52,6 @@ mysqli_close($conn);
                         </h1>
                     </div>
                 </a>
-                <a href="edit.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="edit"><img
-                        src="./svg/edit.svg"></a>
-                <a href="delete.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="edit"
-                    onclick="return confirm('Are you sure you want to delete this game?')"><img src="./svg/delete.svg"></a>
             </div>
         <?php } ?>
     </div>

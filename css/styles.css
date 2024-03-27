@@ -107,13 +107,13 @@ body{
 
   .scroll{
    position: relative;
-   top: 30%;
+   top: 22%;
    width: 80%;
    padding: 50px;
    margin: auto;
    align-items: center;
    display: grid;
-   gap: 5rem;
+   gap: 8rem;
    grid-auto-flow: column;
    grid-auto-columns: 21%;
    overflow-x: auto;
@@ -140,7 +140,7 @@ body{
    transform: translateY(-10px);
 }
 .drink{
-   width: 70%;
+   width: 90%;
    cursor: pointer;
    position: relative;
 }
@@ -229,4 +229,7 @@ body{
    top: 114px;
    right: 30px;
    font-size: 21px;
+}
+a{
+   text-decoration: none;
 }

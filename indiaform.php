@@ -3,7 +3,6 @@ $conn = mysqli_connect('localhost', 'root', '', 'sports');
 if (!$conn) {
     echo 'Connection error' . mysqli_connect_error();
 }
-
 if (isset ($_POST['submit'])) {
     $id = mysqli_real_escape_string($conn, $_POST['id']);
     $name = mysqli_real_escape_string($conn, $_POST['Name']);
@@ -31,11 +30,14 @@ if (isset ($_POST['submit'])) {
     move_uploaded_file($_FILES['file2']['tmp_name'], "Images/" . $file3);
     move_uploaded_file($_FILES['file3']['tmp_name'], "Images/" . $file4);
     move_uploaded_file($_FILES['file4']['tmp_name'], "Images/" . $file5);
-
-    $sql = "INSERT INTO games (id1, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, artiphoto, artinfo) VALUES ('$id', '$name', '$country', '$status', '$team_size', '$time_limit', '$equipment_details', 'Images/$file2', '$costume_details', 'Images/$file3', '$footwear_details', 'Images/$file4', '$rules', 'Images/$file1', '$video_links', '$terminologies_used', '$other_related_types', '$celebrity_players', 'Images/$file5', '$art')";
+    $name1 = '';
+    if (isset ($_GET['name'])) {
+        $name1 = mysqli_real_escape_string($conn, $_GET['name']);
+    }
+    $sql = "INSERT INTO $name1 (id1, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, artiphoto, artinfo) VALUES ('$id', '$name', '$country', '$status', '$team_size', '$time_limit', '$equipment_details', 'Images/$file2', '$costume_details', 'Images/$file3', '$footwear_details', 'Images/$file4', '$rules', 'Images/$file1', '$video_links', '$terminologies_used', '$other_related_types', '$celebrity_players', 'Images/$file5', '$art')";
 
     if (mysqli_query($conn, $sql)) {
-        header('Location: india.php');
+        header('Location: india.php?name=' . $name1);
     } else {
         echo 'Error: ' . mysqli_error($conn);
     }
