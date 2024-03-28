@@ -1,11 +1,19 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'sports');
 if (!$conn) {
-    echo 'Connection error' . mysqli_connect_error();
+    echo 'Connection error: ' . mysqli_connect_error();
 }
-$sql = 'SELECT id, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, time, artiphoto FROM games ORDER BY time';
-$result = mysqli_query($conn, $sql);
-$records = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$records = [];
+if (isset ($_GET['name'])) {
+    $name = mysqli_real_escape_string($conn, $_GET['name']);
+    $sql = "SELECT id, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, artiphoto, artinfo FROM $name";
+    $result = mysqli_query($conn, $sql);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $records = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    } else {
+        echo 'No records found.';
+    }
+}
 mysqli_close($conn);
 ?>
 
@@ -32,12 +40,12 @@ mysqli_close($conn);
                 </ul>
             </nav>
         </header>
-        <a href="indiaform.php" class="add">+ADD GAMES</a>
+        <a href="indiaform.php?name=<?php echo $name; ?>" class="add">+ADD GAMES</a>
     </div>
     <div class="container">
         <?php foreach ($records as $record) { ?>
             <div>
-                <a href="detail.php?id=<?php echo $record['id']; ?>" class="details">
+                <a href="detail.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="details">
                     <div class="element1">
                         <img src="<?php echo $record['photo']; ?>" class='drink'>
                         <h1>
@@ -45,8 +53,9 @@ mysqli_close($conn);
                         </h1>
                     </div>
                 </a>
-                <a href="edit.php?id=<?php echo $record['id']; ?>" class="edit"><img src="./svg/edit.svg"></a>
-                <a href="delete.php?id=<?php echo $record['id']; ?>" class="edit"
+                <a href="edit.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="edit"><img
+                        src="./svg/edit.svg"></a>
+                <a href="delete.php?id=<?php echo $record['id']; ?>&name=<?php echo $name; ?>" class="edit"
                     onclick="return confirm('Are you sure you want to delete this game?')"><img src="./svg/delete.svg"></a>
             </div>
         <?php } ?>

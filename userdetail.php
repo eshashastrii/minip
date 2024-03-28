@@ -29,7 +29,7 @@ if (isset ($_GET['id']) && isset ($_GET['name'])) {
             <a class="logo">GameOn</a>
             <nav class="header">
                 <ul>
-                    <li class="item"><a href="index.php">Home</a></li>
+                    <li class="item"><a href="userindex.php">Home</a></li>
                     <li class="item"><a href=""> About us</a></li>
                     <li class="item"><a href="">Contact us</a></li>
                 </ul>

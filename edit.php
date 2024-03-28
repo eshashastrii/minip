@@ -3,11 +3,13 @@ $conn = mysqli_connect('localhost', 'root', '', 'sports');
 if (!$conn) {
     echo 'Connection error' . mysqli_connect_error();
 }
-
+if (isset ($_GET['name'])) {
+    $name1 = mysqli_real_escape_string($conn, $_GET['name']);
+}
 if (isset ($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    $sql = "SELECT * FROM games WHERE id = $id";
+    $sql = "SELECT * FROM $name1 WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     $record = mysqli_fetch_assoc($result);
 
@@ -42,11 +44,10 @@ if (isset ($_GET['id'])) {
         move_uploaded_file($_FILES['file3']['tmp_name'], $file3);
         move_uploaded_file($_FILES['file4']['tmp_name'], $file4);
         move_uploaded_file($_FILES['file5']['tmp_name'], $file5);
-
-        $sql = "UPDATE games SET id1='$id1', Title = '$name', photo='$file1', country = '$country', status = '$status', size = '$team_size', tlimit = '$time_limit', edetails = '$equipment_details', ephoto = '$file2', cdetails = '$costume_details', cphoto = '$file3', fdetails = '$footwear_details', fphoto = '$file4', rules = '$rules', vlink = '$video_links', terms = '$terminologies_used', types = '$other_related_types', playerlist = '$celebrity_players', artiphoto = '$file5', artinfo='$art' WHERE id = $id";
-
+        $sql = "UPDATE $name1 SET id1='$id1', Title = '$name', photo='$file1', country = '$country', status = '$status', size = '$team_size', tlimit = '$time_limit', edetails = '$equipment_details', ephoto = '$file2', cdetails = '$costume_details', cphoto = '$file3', fdetails = '$footwear_details', fphoto = '$file4', rules = '$rules', vlink = '$video_links', terms = '$terminologies_used', types = '$other_related_types', playerlist = '$celebrity_players', artiphoto = '$file5', artinfo='$art' WHERE id = $id";
+        $result = mysqli_query($conn, $sql);
         if (mysqli_query($conn, $sql)) {
-            header('Location: india.php');
+            header('Location: india.php?name=' . $name1);
         } else {
             echo 'Error: ' . mysqli_error($conn);
         }
@@ -84,7 +85,7 @@ mysqli_close($conn);
     </div>
     <div class="container">
         <h2>Edit Game</h2>
-        <form action="edit.php?id=<?php echo $record['id']; ?>" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             <label for="id1">Sr. No.:</label>
             <input type="text" id="id1" name="id1" placeholder="Enter Sr. No."
                 value="<?php echo htmlspecialchars($record['id1']); ?>"><br>
