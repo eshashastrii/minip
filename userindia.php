@@ -4,7 +4,7 @@ if (!$conn) {
     echo 'Connection error: ' . mysqli_connect_error();
 }
 $records = [];
-if (isset ($_GET['name'])) {
+if (isset($_GET['name'])) {
     $name = mysqli_real_escape_string($conn, $_GET['name']);
     $sql = "SELECT id, Title, country, status, size, tlimit, edetails, ephoto, cdetails, cphoto, fdetails, fphoto, rules, photo, vlink, terms, types, playerlist, artiphoto, artinfo FROM $name";
     $result = mysqli_query($conn, $sql);

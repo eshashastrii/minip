@@ -4,7 +4,7 @@ if (!$conn) {
     echo 'Connection error' . mysqli_connect_error();
 }
 
-if (isset ($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($conn, $_POST['Name']);
     $file1 = $_FILES['file']['name'];
     move_uploaded_file($_FILES['file']['tmp_name'], "Images/" . $file1);
@@ -15,7 +15,7 @@ if (isset ($_POST['submit'])) {
         Title VARCHAR(255),
         country VARCHAR(255),
         status VARCHAR(255),
-        size VARCHAR(255),
+        size int,
         tlimit VARCHAR(255),
         edetails LONGTEXT,
         ephoto VARCHAR(400),
